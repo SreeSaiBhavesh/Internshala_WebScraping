@@ -20,17 +20,19 @@ if n==1:
     a = 0
     for job in jobs:
         
-        category = job.find('div', class_={'heading_4_5 profile'}).a.text
+        category = job.find('h3', class_={'heading_4_5 profile'}).a.text
         if cat in category:
             a = 1
-            company_name = job.find('div', class_='heading_6 company_name').a.text
+            #company = job.find('div', class_='heading_6 company_name')
+            company_name = job.find('h4',class_='heading_6 company_name').a.text
             location_work = job.find('a', class_='location_link view_detail_button').text
-            position = job.find('div', class_='heading_4_5 profile').a.text
+            position = job.find('h3', class_='heading_4_5 profile').a.text
             du = job.find_all('div', class_='other_detail_item_row')
             
             
                     
-            job_type = job.find('div', class_='label_container label_container_mobile').text
+            #job_type = job.find('div', class_='label_container label_container_mobile').text
+            job_type = job.find('div', class_ = 'status status-small status-inactive').text
 
             if job_type=='                    Fresher Job                ':
                 #pay_scale = job.find('div', class_='item_body').i.text
@@ -66,17 +68,19 @@ elif n==2:
     html_text = requests.get('https://internshala.com/jobs/internships').text
     soup = BeautifulSoup(html_text,'lxml')
     jobs = soup.find_all('div', class_= {'container-fluid individual_internship visibilityTrackerItem'})
+    
     a = 0
     for job in jobs:
         location_work = job.find('a', class_='location_link view_detail_button').text
         if loc in location_work:
             a = 1
-            company_name = job.find('div', class_='heading_6 company_name').a.text
-            position = job.find('div', class_='heading_4_5 profile').a.text
+            #company = job.find('div', class_='heading_6 company_name')
+            company_name = job.find('h4',class_='heading_6 company_name').a.text
+            position = job.find('h3', class_='heading_4_5 profile').a.text
             #deadline = job.find('div', class_='item_body').text
             location_work = job.find('a', class_='location_link view_detail_button').text
-            job_type = job.find('div', class_='label_container label_container_mobile').text
-
+            #job_type = job.find('div', class_='label_container label_container_mobile').text
+            job_type = job.find('div', class_ = 'status status-small status-inactive').text
 
             print(f"Company Name: {company_name.strip()}")
             print(f"Position: {position.strip()}")
@@ -126,11 +130,13 @@ elif n==3:
         jobs = soup.find_all('div', class_= {'container-fluid individual_internship visibilityTrackerItem'})
 
         for job in jobs:
-            company_name = job.find('div', class_='heading_6 company_name').a.text
-            position = job.find('div', class_='heading_4_5 profile').a.text
+            #company = job.find('div', class_='heading_6 company_name')
+            company_name = job.find('div',class_='company_and_premium').a.text
+            position = job.find('h3', class_='heading_4_5 profile').a.text
             #deadline = job.find('div', class_='item_body').text
             location_work = job.find('a', class_='location_link view_detail_button').text
-            job_type = job.find('div', class_='label_container label_container_mobile').text
+            #job_type = job.find('div', class_='label_container label_container_mobile').text
+            job_type = job.find('div', class_ = 'status status-small status-inactive').text
             #pay_scale = job.find('div', class_='item_body').i.text
 
             print(f"Company Name: {company_name.strip()}")
@@ -149,11 +155,13 @@ elif n==3:
 
         for job in jobs:
 
-            company_name = job.find('div', class_='heading_6 company_name').a.text
-            position = job.find('div', class_='heading_4_5 profile').a.text
+            #company = job.find('div', class_='heading_6 company_name')
+            company_name = job.find('div',class_='company_and_premium').a.text
+            position = job.find('h3', class_='heading_4_5 profile').a.text
             #deadline = job.find('div', class_='item_body').text
             location_work = job.find('a', class_='location_link view_detail_button').text
-            job_type = job.find('div', class_='label_container label_container_mobile').text
+            #job_type = job.find('div', class_='label_container label_container_mobile').text
+            job_type = job.find('div', class_ = 'status status-small status-inactive').text
             pay_scale = job.find('span', class_='stipend').text
             #duration = job.find('div', class_='item_body').text
 
